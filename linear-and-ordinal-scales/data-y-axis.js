@@ -1,8 +1,16 @@
-// Animating
+// Adding a y axis
 
 window.onload = function() {
 
-  var bardata = [20, 30, 20, 15, 40, 80];
+  var bardata = [];
+
+  for(var i=0; i<50; i++) {
+    bardata.push( Math.round( Math.random()*50 ) + 5 )
+  }
+
+  bardata.sort(function compareNumbers(a,b) {
+    return a -b;
+  }) // sorts the data!
 
   var height = 400,
       width = 600,
@@ -33,6 +41,7 @@ window.onload = function() {
     .attr('width', width)
     .attr('height', height)
     .style('background', 'lightblue')
+    .append('g') // add an svg grouping element
     .selectAll('rect').data(bardata)
     .enter().append('rect')
       .style('fill', function(d,i) {
@@ -43,9 +52,9 @@ window.onload = function() {
       .attr('x', function(d,i) {
         return xScale(i);
       })
-      .attr('y', height) // initially set y coordinate to height of bar (this is same as you animate *to* for height attr in event below)
+      .attr('y', height)
     .on('mouseover', function(d) {
-      tooltip.transition() // tooltip here
+      tooltip.transition()
         .style('opacity', 0.9)
       tooltip.html(d)
         .style('left', (d3.event.pageX - 30) + 'px')
@@ -68,12 +77,30 @@ window.onload = function() {
         return yScale(d)
       })
       .attr('y', function(d) {
-        return height - yScale(d); // grows to y
+        return height - yScale(d);
       })
       .delay(function(d,i) {
-        return i * 60 // each one animates after 60ms multiplied by its index
+        return i * 60
       })
-      .ease('elastic') // make the transition bouncy
-      .duration(2900) // make drawing and bouncing each thing longer
+      .ease('elastic')
+      .duration(1000)
+
+    var vGuideScale = d3.scale.linear()
+      .domain([0, d3.max(bardata)])
+      .range([height, 0]) // opposite way round to yscale
+
+    var vAxis = d3.svg.axis()
+      .scale(vGuideScale)
+      .orient('left')
+      .ticks(10) // number of divisions / tick marks
+
+    var vGuide = d3.select('svg').append('g')
+    vAxis(vGuide)
+
+    vGuide.attr('transform', 'translate(35, 1)')
+    vGuide.selectAll('path')
+      .style({ fill: 'yellow', stroke: "blue", opacity: 0.3 });
+    vGuide.selectAll('line')
+      .style({ stroke: "red" })
 
 } // window onload
