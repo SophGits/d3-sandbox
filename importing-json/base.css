@@ -1,0 +1,6 @@
+* { font-family: Arial; }
+.container { margin: 50px; }
+
+.highlight { background-color: pink; }
+.item { padding: 10px 30px; }
+.bigger { font-size: 150%; }
