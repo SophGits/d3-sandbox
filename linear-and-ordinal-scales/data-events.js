@@ -1,7 +1,4 @@
 // Make later blocks darker
-
-// for more, including rainbows and colouring specific portions, see: http://www.lynda.com/D3js-tutorials/Creating-meaningful-color-scales/162449/185063-4.html
-
 window.onload = function() {
 
   var bardata = [20, 30, 20, 15, 40, 80];
@@ -10,6 +7,8 @@ window.onload = function() {
       width = 600,
       barWidth = 50,
       barOffset = 5;
+
+  var tempColour; // make variable
 
   var yScale = d3.scale.linear()
     .domain([0, d3.max(bardata)])
@@ -20,7 +19,7 @@ window.onload = function() {
     .rangeBands([0, width])
 
   var colours = d3.scale.linear()
-    .domain([0, bardata.length]) //domain now dependent on position of data (rather than value)
+    .domain([0, bardata.length])
     .range(['lightgreen', 'seagreen'])
 
   d3.select('#chart').append('svg')
@@ -30,7 +29,7 @@ window.onload = function() {
     .selectAll('rect').data(bardata)
     .enter().append('rect')
       .style('fill', function(d,i) {
-        return colours(i) // fill depending on index
+        return colours(i)
       })
       .attr('width', xScale.rangeBand())
       .attr('height', function(d,i) {
@@ -42,5 +41,16 @@ window.onload = function() {
       .attr('y', function(d) {
         return height - yScale(d);
       })
+    .on('mouseover', function(d) {
+      tempColour = this.style.fill;
+      d3.select(this)
+        .style('opacity', 0.5)
+        .style('fill', 'yellow') // on mouseover apply half opacity and a yellow colour
+    })
+    .on('mouseout', function(d) {
+      d3.select(this)
+        .style('opacity', 1)
+        .style('fill', tempColour) // fill with original colour
+    })
 
 } // window onload
