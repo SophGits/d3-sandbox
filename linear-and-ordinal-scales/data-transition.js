@@ -1,5 +1,6 @@
 // Makes bar grow from top down
 // More from http://www.lynda.com/D3js-tutorials/Adding-tooltip/162449/185066-4.html
+// You can do delays, easing etc
 
 window.onload = function() {
 
@@ -24,7 +25,7 @@ window.onload = function() {
     .domain([0, bardata.length]) //domain now dependent on position of data (rather than value)
     .range(['lightgreen', 'seagreen'])
 
-  var thisChart = d3.select('#chart').append('svg')
+  var thisChart = d3.select('#chart').append('svg') // make the cgart a variable for use below
     .attr('width', width)
     .attr('height', height)
     .style('background', 'lightblue')
@@ -55,9 +56,10 @@ window.onload = function() {
         .style('fill', tempColour)
     })
 
-    thisChart.transition().duration(2000) // transition
-      .attr('height', function(d) {
-        return yScale(d)
-      })
+
+  thisChart.transition().duration(2000) // Here's that variable. transition
+    .attr('height', function(d) {
+      return yScale(d)
+    })
 
 } // window onload
