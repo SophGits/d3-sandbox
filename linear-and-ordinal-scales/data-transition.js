@@ -1,4 +1,5 @@
-// Add mouseover/out event
+// Makes bar grow from top down
+// More from http://www.lynda.com/D3js-tutorials/Adding-tooltip/162449/185066-4.html
 
 window.onload = function() {
 
@@ -9,7 +10,7 @@ window.onload = function() {
       barWidth = 50,
       barOffset = 5;
 
-  var tempColour; // make variable
+  var tempColour;
 
   var yScale = d3.scale.linear()
     .domain([0, d3.max(bardata)])
@@ -20,10 +21,10 @@ window.onload = function() {
     .rangeBands([0, width])
 
   var colours = d3.scale.linear()
-    .domain([0, bardata.length])
+    .domain([0, bardata.length]) //domain now dependent on position of data (rather than value)
     .range(['lightgreen', 'seagreen'])
 
-  d3.select('#chart').append('svg')
+  var thisChart = d3.select('#chart').append('svg')
     .attr('width', width)
     .attr('height', height)
     .style('background', 'lightblue')
@@ -33,9 +34,7 @@ window.onload = function() {
         return colours(i)
       })
       .attr('width', xScale.rangeBand())
-      .attr('height', function(d,i) {
-        return yScale(d)
-      })
+      .attr('height', 0) // initial height of 0
       .attr('x', function(d,i) {
         return xScale(i);
       })
@@ -45,13 +44,20 @@ window.onload = function() {
     .on('mouseover', function(d) {
       tempColour = this.style.fill;
       d3.select(this)
+        .transition().duration(200)
         .style('opacity', 0.5)
-        .style('fill', 'yellow') // on mouseover apply half opacity and a yellow colour
+        .style('fill', 'yellow')
     })
     .on('mouseout', function(d) {
       d3.select(this)
+        .transition().duration(800)
         .style('opacity', 1)
-        .style('fill', tempColour) // fill with original colour
+        .style('fill', tempColour)
     })
+
+    thisChart.transition().duration(2000) // transition
+      .attr('height', function(d) {
+        return yScale(d)
+      })
 
 } // window onload
