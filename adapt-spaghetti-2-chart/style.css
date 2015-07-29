@@ -6,27 +6,30 @@ body {
 /*.audi.highlight { stroke: #895881; }*/
 
 .audi { color: green; }
-path[manufacturer="Audi"] { stroke: green; }
+path[manufacturer="audi"] { stroke: green; }
 
 .mitsubishi { color: red; }
-path[manufacturer="Mitsubishi"] { stroke: red; }
+path[manufacturer="mitsubishi"] { stroke: red; }
 
 .citroen { color: orange; }
-path[manufacturer="Citroen"] { stroke: orange; }
+path[manufacturer="citroen"] { stroke: orange; }
 
 .peugeot { color: blue; }
-path[manufacturer="Peugeot"] { stroke: blue; }
+path[manufacturer="peugeot"] { stroke: blue; }
 
 .nissan { color: purple; }
-path[manufacturer="Nissan"] { stroke: purple; }
+path[manufacturer="nissan"] { stroke: purple; }
 
 .renault { color: lawngreen; }
-path[manufacturer="Renault"] { stroke: lawngreen; }
+path[manufacturer="renault"] { stroke: lawngreen; }
 
 .vauxhall { color: lightblue; }
-path[manufacturer="Vauxhall"] { stroke: lightblue ;}
+path[manufacturer="vauxhall"] { stroke: lightblue; }
 
-.foo { color: red; text-decoration: underline; background-color: yellow; }
+.foo, .bar { color: red; text-decoration: underline; background-color: yellow; }
+.baz { opacity: 1; }
+
+/*path[baz="baz"] { stroke-dasharray: 5,5; }*/
 
 p { line-height: 1.4em; margin-bottom: 1.0em; }
 a { color: #821122; }
@@ -70,7 +73,7 @@ path {
     /*stroke: #e2e2e2;*/
     stroke-width: 4.1;
     fill: none;
-    opacity: 0.5;
+    opacity: 0.2;
 }
 /*path:hover {  stroke-width: 1.7; }*/
 path.current, path.highlight.current {

@@ -78,7 +78,7 @@ window.onload = function() {
             }
             vis.append("svg:path")
                 .data([currData])
-                .attr("manufacturer", cars[i][0])
+                .attr("manufacturer", cars[i][0].toLowerCase())
                 .attr("model", cars[i][1])
                 // .attr("class", countries_regions[countries[i][1]]) // eg ECS (Albania is in Europe and Central Asia)
                 .attr("d", line) // the D3 line fn (above) takes the whole array of point objects (each obj containing an x and y coordinate) and draws the path for us.
@@ -158,8 +158,14 @@ window.onload = function() {
         // var currClass = d3.select(this).attr("class");
         if (d3.select(this).classed('selected')) {
             d3.select(this).classed('selected', false);
+            var manufacturer = this.attributes['manufacturer'].value.toLowerCase();
+            $('.' + manufacturer).removeClass('bar');
+            d3.selectAll("path[manufacturer=" + manufacturer + "]").classed('baz', false);
         } else {
             d3.select(this).classed('selected', true);
+            var manufacturer = this.attributes['manufacturer'].value.toLowerCase();
+            $('.' + manufacturer).addClass('bar');
+            d3.selectAll("path[manufacturer=" + manufacturer + "]").classed('baz', true);
         }
     }
 
