@@ -18,7 +18,7 @@ window.onload = function() {
       y = d3.scale.linear().domain([highestOTR, lowestOTR]).range([0 + margin, height - margin]),
       x = d3.scale.linear()
         .domain([0, vintages.length -1])
-        .range([0 + margin -5, width]),
+        .range([0 + margin, width - margin]),
       years = d3.range(startYear, endYear);
 
     var vis = d3.select("#chart")
