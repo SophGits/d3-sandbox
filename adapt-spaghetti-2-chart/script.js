@@ -6,17 +6,7 @@ window.onload = function() {
         "twentyFourMonth24kMilesPartEx",
         "thirtySixMonth36kMilesPartEx",
         "fourtyEightMonth48kMilesPartEx"
-    ]
-
-    var regions = {
-        "SAS": "South Asia" ,
-        "ECS": "Europe and Central Asia",
-        "MEA": "Middle East & North Africa",
-        "SSF": "Sub-Saharan Africa",
-        "LCN": "Latin America & Caribbean",
-        "EAS": "East Asia &amp; Pacific",
-        "NAC": "North America"
-    },
+    ],
 
       width = 925,
       height = 550,
@@ -24,9 +14,11 @@ window.onload = function() {
       startYear = 0,
       endYear = 5,
       lowestOTR = 800,
-      highestOTR = 31000,
+      highestOTR = 15000,
       y = d3.scale.linear().domain([highestOTR, lowestOTR]).range([0 + margin, height - margin]),
-      x = d3.scale.linear().domain([0, vintages.length ]).range([0 + margin -5, width]), // input domain, output range (if you give input of 500 and range goes to 400 it will give 400; 250 will get you 200 )
+      x = d3.scale.linear()
+        .domain([0, vintages.length ])
+        .range([0 + margin -5, width]),
       years = d3.range(startYear, endYear);
 
     var vis = d3.select("#chart")
@@ -34,25 +26,14 @@ window.onload = function() {
         .attr("width", width)
         .attr("height", height)
         .append("svg:g")
-        // .attr("transform", "translate(0, 600)");
+        // .attr("transform", "translate(0, 500)");
 
 
     var line = d3.svg.line()
         .x(function(d) { return x(d.x); }) // by this point, d is an Object like {x: 1960, y: "62.25436585"}
         .y(function(d) { return y(d.y); });
 
-    // // Regions
-    // var countries_regions = {};
-    // d3.text('country-regions.csv', 'text/csv', function(text) {
-    //     var regions = d3.csv.parseRows(text);
-    //     for (i=1; i < regions.length; i++) {
-    //         countries_regions[regions[i][0]] = regions[i][1];
-    //     }
-    // });
-
-    // var startEnd = {},
-     // var   countryCodes = {};
-    d3.text('cardata-sample.csv', 'text/csv', function(text) {
+    d3.text('up-to-15k.csv', 'text/csv', function(text) {
         var cars = d3.csv.parseRows(text);
 
             var manufacturerList = [];
@@ -93,7 +74,7 @@ window.onload = function() {
     vis.append("svg:line")
         .attr("x1", x(startYear))
         .attr("y1", y(lowestOTR))
-        .attr("x2", x(endYear)) // fills in horizontal x-axis line
+        .attr("x2", x(endYear)) // 5. As at top of file. fills in horizontal x-axis line
         .attr("y2", y(lowestOTR))
         .attr("class", "axis")
 
@@ -110,19 +91,27 @@ window.onload = function() {
         .enter().append("svg:text")
         .attr("class", "xLabel")
         .text(String)
-        .attr("x", function(d) { return x(d) })
+        .attr("x", function(d) { return x(d) }) // x(0) = 45 x(2) = 397
         .attr("y", height -10)
         .attr("text-anchor", "middle")
+
+    function replaceXnums() {
+        var nums = vis.selectAll(".xLabel");
+        nums.each( function(i) {
+            this.innerHTML = vintages[i]
+        });
+    }
+    replaceXnums();
 
     vis.selectAll(".yLabel")
         .data(y.ticks(4))
         .enter().append("svg:text")
         .attr("class", "yLabel")
         .text(String)
-      .attr("x", 0)
-      .attr("y", function(d) { return y(d) })
-      .attr("text-anchor", "right")
-      .attr("dy", 3)
+        .attr("x", 0)
+        .attr("y", function(d) { return y(d) })
+        .attr("text-anchor", "right")
+        .attr("dy", 3)
 
     vis.selectAll(".xTicks")
         .data(x.ticks(5))
