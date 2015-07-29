@@ -122,6 +122,35 @@ window.onload = function() {
     }
     replaceYnums();
 
+
+    function extendYTick() {
+      vis.selectAll(".yTicks")
+        .attr("x2", x(4))
+            // .on("mouseover", function() {
+            //   d3.select(this).attr("x2", x(4))
+            // })
+            // .on("mouseout", function() {
+            //   d3.select(this).attr("x2", x(-0.04))
+            // })
+    }
+    function retractYTick() {
+      vis.selectAll(".yTicks")
+        .attr("x2", x(-0.04))
+    }
+
+    function setListenerOnYNums() {
+        var nums = vis.selectAll(".yLabel");
+        $.each(nums, function() {
+            $(this).on('mouseover', function()  {
+                extendYTick();
+            })
+            $(this).on('mouseout', function()  {
+                retractYTick();
+            })
+        })
+    }
+    setListenerOnYNums();
+
     vis.selectAll(".xTicks")
         .data(x.ticks(5))
         .enter().append("svg:line")
