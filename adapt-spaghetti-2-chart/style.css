@@ -26,7 +26,7 @@ path[manufacturer="Renault"] { stroke: lawngreen; }
 .vauxhall { color: lightblue; }
 path[manufacturer="Vauxhall"] { stroke: lightblue ;}
 
-.foo { color: red; }
+.foo { color: red; text-decoration: underline; background-color: yellow; }
 
 p { line-height: 1.4em; margin-bottom: 1.0em; }
 a { color: #821122; }

@@ -20,7 +20,7 @@ window.onload = function() {
 
       width = 925,
       height = 550,
-      margin = 30,
+      margin = 50,
       startYear = 0,
       endYear = 5,
       lowestOTR = 800,
@@ -140,7 +140,13 @@ window.onload = function() {
         .attr("y1", function(d) { return y(d); })
         .attr("x1", x(0))
         .attr("y2", function(d) { return y(d); })
-        .attr("x2", x(0))
+        .attr("x2", x(-0.04))
+            .on("mouseover", function() {
+              d3.select(this).attr("x2", x(4))
+            })
+            .on("mouseout", function() {
+              d3.select(this).attr("x2", x(-0.04))
+            })
 
     var tooltip = d3.select('body').append('div')
       .style('position', 'absolute')
