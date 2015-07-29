@@ -216,5 +216,8 @@ window.onload = function() {
 
     function listManufacturers( list ) {
         console.log(list);
+        for(var i=list.length; i--; ) {
+            $('#key').append('<div class="' + list[i].toLowerCase() + '">' + list[i] + '</div>');
+        }
     }
 }
