@@ -113,6 +113,15 @@ window.onload = function() {
         .attr("text-anchor", "right")
         .attr("dy", 3)
 
+    function replaceYnums() {
+        var nums = vis.selectAll(".yLabel");
+        nums.each( function(i) {
+            var original = this.innerHTML;
+            this.innerHTML = '&#163;' + original;
+        });
+    }
+    replaceYnums();
+
     vis.selectAll(".xTicks")
         .data(x.ticks(5))
         .enter().append("svg:line")
