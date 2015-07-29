@@ -84,7 +84,8 @@ window.onload = function() {
                 .attr("d", line) // the D3 line fn (above) takes the whole array of point objects (each obj containing an x and y coordinate) and draws the path for us.
                 .on("mouseover", onmouseover)
                 .on("mouseout", onmouseout)
-                .on("mousemove", onmousemove);
+                .on("mousemove", onmousemove)
+                .on("click", onclick);
                 // appends data, and away we go on the next item in the loop. var srarted is false again and a new set of datapoints for the next country is collated and appended
         }
     });
@@ -105,7 +106,7 @@ window.onload = function() {
         .attr("class", "axis")
 
     vis.selectAll(".xLabel")
-        .data(x.ticks(5))
+        .data(x.ticks(4))
         .enter().append("svg:text")
         .attr("class", "xLabel")
         .text(String)
@@ -137,9 +138,9 @@ window.onload = function() {
         .enter().append("svg:line")
         .attr("class", "yTicks")
         .attr("y1", function(d) { return y(d); })
-        .attr("x1", x(1959.5))
+        .attr("x1", x(0))
         .attr("y2", function(d) { return y(d); })
-        .attr("x2", x(1960))
+        .attr("x2", x(0))
 
     var tooltip = d3.select('body').append('div')
       .style('position', 'absolute')
@@ -148,9 +149,9 @@ window.onload = function() {
       .style('opacity', 0)
 
     function onclick(d, i) {
-        var currClass = d3.select(this).attr("class");
+        // var currClass = d3.select(this).attr("class");
         if (d3.select(this).classed('selected')) {
-            d3.select(this).attr("class", currClass.substring(0, currClass.length-9));
+            d3.select(this).classed('selected', false);
         } else {
             d3.select(this).classed('selected', true);
         }
@@ -169,45 +170,21 @@ window.onload = function() {
          tooltip.html(this.getAttribute('manufacturer') + ' ' + this.getAttribute('model') + '<br/>(x,y): ' + d[i].x + ', ' + d[i].y)
          // tooltip.html(d[i].Manufacturer + ' ' + d.x + ', ' + d.y)
            .style('left', (d3.event.pageX - 30) + 'px')
-           .style('top', (d3.event.pageY) + 'px');
+           .style('top', (d3.event.pageY -55) + 'px');
 
          // focus.attr("transform", "translate(" + x(d.date) + "," + y(d.close) + ")");
     }
 
     function onmouseover(d, i) {
-
-        var currClass = d3.select(this).attr("class");
-        d3.select(this)
-            .attr("class", currClass + " current");
-
-        // var countryCode = $(this).attr("country");
-        // var countryVals = startEnd[countryCode];
-        // var percentChange = 100 * (countryVals['endVal'] - countryVals['startVal']) / countryVals['startVal'];
-
-        // var blurb = '<h2>' + countryCodes[countryCode] + '</h2>';
-        // blurb += "<p>On average: a life expectancy of " + Math.round(countryVals['startVal']) + " years in " + countryVals['startYear'] + " and " + Math.round(countryVals['endVal']) + " years in " + countryVals['endYear'] + ", ";
-        // if (percentChange >= 0) {
-        //     blurb += "an increase of " + Math.round(percentChange) + " percent."
-        // } else {
-        //     blurb += "a decrease of " + -1 * Math.round(percentChange) + " percent."
-        // }
-        // blurb += "</p>";
-
-        // tooltip.transition()
-        //   .style('opacity', 0.9)
-        // tooltip.html(this.getAttribute('manufacturer') + ' ' + this.getAttribute('model') + '<br/>(x,y): ' + d[i].x + ', ' + d[i].y)
-        // // tooltip.html(d[i].Manufacturer + ' ' + d.x + ', ' + d.y)
-        //   .style('left', (d3.event.pageX - 30) + 'px')
-        //   .style('top', (d3.event.pageY) + 'px');
-
-        // $("#default-blurb").hide();
-        // $("#blurb-content").html(blurb);
+        if (!d3.select(this).classed('current')) {
+            d3.select(this).classed('current', true)
+        }
     }
+
     function onmouseout(d, i) {
-        var currClass = d3.select(this).attr("class");
-        var prevClass = currClass.substring(0, currClass.length-8);
-        d3.select(this)
-            .attr("class", prevClass);
+        if (d3.select(this).classed('current')) {
+            d3.select(this).classed('current', false)
+        }
         // $("#default-blurb").show();
         // $("#blurb-content").html('');
     }
