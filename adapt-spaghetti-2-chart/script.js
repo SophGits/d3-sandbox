@@ -216,8 +216,20 @@ window.onload = function() {
 
     function listManufacturers( list ) {
         console.log(list);
+        var manuf;
         for(var i=list.length; i--; ) {
-            $('#key').append('<div class="' + list[i].toLowerCase() + '">' + list[i] + '</div>');
+            manuf = list[i].toLowerCase()
+            $('#key').append('<div class="' + manuf + ' type">' + list[i] + '</div>');
         }
+        $('#key .type').on('click', function() {
+            var manuf = this.classList[0];
+            if ( this.classList.contains("bar") ) {
+                $(this).removeClass('bar');
+                d3.selectAll("path[manufacturer=" + manuf + "]").classed('baz', false);
+            } else {
+                $(this).addClass('bar');
+                d3.selectAll("path[manufacturer=" + manuf + "]").classed('baz', true);
+            }
+        })
     }
 }
