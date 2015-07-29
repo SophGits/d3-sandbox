@@ -2,10 +2,10 @@ window.onload = function() {
 
     var vintages = [
         "OTR",
-        "twelveMonth12kmilesPartEx",
-        "twentyFourMonth24kMilesPartEx",
-        "thirtySixMonth36kMilesPartEx",
-        "fourtyEightMonth48kMilesPartEx"
+        "1 year\n PartEx",
+        "2 years\n PartEx",
+        "3 years\n PartEx",
+        "4 years\n PartEx"
     ],
 
       width = 925,
@@ -17,7 +17,7 @@ window.onload = function() {
       highestOTR = 15000,
       y = d3.scale.linear().domain([highestOTR, lowestOTR]).range([0 + margin, height - margin]),
       x = d3.scale.linear()
-        .domain([0, vintages.length ])
+        .domain([0, vintages.length -1])
         .range([0 + margin -5, width]),
       years = d3.range(startYear, endYear);
 
@@ -74,7 +74,7 @@ window.onload = function() {
     vis.append("svg:line")
         .attr("x1", x(startYear))
         .attr("y1", y(lowestOTR))
-        .attr("x2", x(endYear)) // 5. As at top of file. fills in horizontal x-axis line
+        .attr("x2", x(endYear -1))
         .attr("y2", y(lowestOTR))
         .attr("class", "axis")
 
