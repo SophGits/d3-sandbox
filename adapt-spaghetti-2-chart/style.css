@@ -23,8 +23,76 @@ path[manufacturer="nissan"] { stroke: purple; }
 .renault { color: lawngreen; }
 path[manufacturer="renault"] { stroke: lawngreen; }
 
-.vauxhall { color: lightblue; }
-path[manufacturer="vauxhall"] { stroke: lightblue; }
+.vauxhall { color: darkorchid; }
+path[manufacturer="vauxhall"] { stroke: darkorchid; }
+
+.mini { color: darkcyan; }
+path[manufacturer="mini"] { stroke: darkcyan; }
+
+.honda { color: cyan; }
+path[manufacturer="honda"] { stroke: cyan; }
+
+.aixam { color: bisque; }
+path[manufacturer="aixam"] { stroke: bisque; }
+
+.mazda { color: chocolate; }
+path[manufacturer="mazda"] { stroke: chocolate; }
+
+.chrysler { color: red; }
+path[manufacturer="chrysler"] { stroke: red; }
+
+.smart { color: lightgreen; }
+path[manufacturer="smart"] { stroke: lightgreen; }
+
+.ssangyong { color: darkgray; }
+path[manufacturer="ssangyong"] { stroke: darkgray; }
+
+.alfa.romeo { color: lightgray; }
+path[manufacturer="alfa romeo"] { stroke: lightgray; }
+
+.fiat { color: gray; }
+path[manufacturer="fiat"] { stroke: gray; }
+
+.chevrolet { color: black; }
+path[manufacturer="chevrolet"] { stroke: black; }
+
+.ford { color: royalblue; }
+path[manufacturer="ford"] { stroke: royalblue; }
+
+.toyota { color: lightyellow; }
+path[manufacturer="toyota"] { stroke: lightyellow; }
+
+.hyundai { color: lightpink; }
+path[manufacturer="hyundai"] { stroke: lightpink; }
+
+.mg.motor.uk { color: darkorange; }
+path[manufacturer="mg motor uk"] { stroke: darkorange; }
+
+.volkswagen { color: darkgreen; }
+path[manufacturer="volkswagen"] { stroke: darkgreen; }
+
+.skoda { color: darkblue; }
+path[manufacturer="skoda"] { stroke: darkblue; }
+
+.seat { color: darkred; }
+path[manufacturer="seat"] { stroke: darkred; }
+
+.kia { color: linen; }
+path[manufacturer="kia"] { stroke: linen; }
+
+.proton { color: coral; }
+path[manufacturer="proton"] { stroke: coral; }
+
+.suzuki { color: aliceblue; }
+path[manufacturer="suzuki"] { stroke: aliceblue; }
+
+.perodua { color: yellow; }
+path[manufacturer="perodua"] { stroke: yellow; }
+
+.dacia { color: pink; }
+path[manufacturer="dacia"] { stroke: pink; }
+
+
 
 .foo, .bar { color: red; text-decoration: underline; background-color: yellow; }
 .baz { opacity: 1; }
@@ -60,6 +128,17 @@ a { color: #821122; }
 #filters a.EAS { background: #e25f82; color: #fff; }
 #filters a.NAC { background: #be1932; color: #fff; }
 
+
+h2 { text-align: center; }
+#key { text-align: center; }
+h3 { color: gray; }
+.type {
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid gray;
+  border-radius: 2px;
+}
+
 #vis {
     min-height: 550px;
 }
@@ -71,24 +150,18 @@ a { color: #821122; }
 
 path {
     /*stroke: #e2e2e2;*/
-    stroke-width: 4.1;
+    stroke-width: 1.7;
     fill: none;
     opacity: 0.2;
 }
 /*path:hover {  stroke-width: 1.7; }*/
 path.current, path.highlight.current {
     /*stroke: #000;*/
-    stroke-width: 5;
+    stroke-width: 4;
     cursor: pointer; opacity: 1;
 }
-.SAS.highlight { stroke: #895881; }
-.ECS.highlight { stroke: #ED7C31; }
-.MEA.highlight { stroke: #82A5C0; }
-.SSF.highlight { stroke: #6E9E75; }
-.LCN.highlight { stroke: #00BBD6; }
-.EAS.highlight { stroke: #e25f82; }
-.NAC.highlight { stroke: #be1932; }
-.highlight { stroke-width: 1px; }
+
+/*.highlight { stroke-width: 1px; }*/
 
 line {
     stroke: black;
