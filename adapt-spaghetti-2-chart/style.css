@@ -6,127 +6,180 @@ body {
 /*.audi.highlight { stroke: #895881; }*/
 
 .audi { color: green; }
+.bar.audi { background-color: green; }
 path[manufacturer="audi"] { stroke: green; }
 
 .mitsubishi { color: red; }
+.bar.mitsubishi { background-color: red; }
 path[manufacturer="mitsubishi"] { stroke: red; }
 
 .citroen { color: orange; }
+.bar.citroen { background-color: orange; }
 path[manufacturer="citroen"] { stroke: orange; }
 
 .peugeot { color: blue; }
+.bar.peugeot { background-color: blue; }
 path[manufacturer="peugeot"] { stroke: blue; }
 
 .nissan { color: purple; }
+.bar.nissan { background-color: purple; }
 path[manufacturer="nissan"] { stroke: purple; }
 
 .renault { color: lawngreen; }
+.bar.renault { background-color: lawngreen; }
 path[manufacturer="renault"] { stroke: lawngreen; }
 
 .vauxhall { color: darkorchid; }
+.bar.vauxhall { background-color: darkorchid; }
 path[manufacturer="vauxhall"] { stroke: darkorchid; }
 
 .mini { color: darkcyan; }
+.bar.mini { background-color: darkcyan; }
 path[manufacturer="mini"] { stroke: darkcyan; }
 
 .honda { color: cyan; }
+.bar.honda { background-color: cyan; }
 path[manufacturer="honda"] { stroke: cyan; }
 
 .aixam { color: bisque; }
+.bar.aixam { background-color: bisque; }
 path[manufacturer="aixam"] { stroke: bisque; }
 
 .mazda { color: chocolate; }
+.bar.mazda { background-color: chocolate; }
 path[manufacturer="mazda"] { stroke: chocolate; }
 
 .chrysler { color: red; }
+.bar.chrysler { background-color: red; }
 path[manufacturer="chrysler"] { stroke: red; }
 
 .smart { color: lightgreen; }
+.bar.smart { background-color: lightgreen; }
 path[manufacturer="smart"] { stroke: lightgreen; }
 
 .ssangyong { color: darkgray; }
+.bar.ssangyong { background-color: darkgray; }
 path[manufacturer="ssangyong"] { stroke: darkgray; }
 
 .alfa.romeo { color: lightgray; }
+.bar.alfa.romeo { background-color: lightgray; }
 path[manufacturer="alfa romeo"] { stroke: lightgray; }
 
 .fiat { color: gray; }
+.bar.fiat { background-color: gray; }
 path[manufacturer="fiat"] { stroke: gray; }
 
 .chevrolet { color: black; }
+.bar.chevrolet { background-color: black; }
 path[manufacturer="chevrolet"] { stroke: black; }
 
 .ford { color: royalblue; }
+.bar.ford { background-color: royalblue; }
 path[manufacturer="ford"] { stroke: royalblue; }
 
 .toyota { color: lightyellow; }
+.bar.toyota { background-color: lightyellow; }
 path[manufacturer="toyota"] { stroke: lightyellow; }
 
 .hyundai { color: lightpink; }
+.bar.hyundai { background-color: lightpink; }
 path[manufacturer="hyundai"] { stroke: lightpink; }
 
 .mg.motor.uk { color: darkorange; }
+.bar.mg.motor.uk { background-color: darkorange; }
 path[manufacturer="mg motor uk"] { stroke: darkorange; }
 
 .volkswagen { color: darkgreen; }
+.bar.volkswagen { background-color: darkgreen; }
 path[manufacturer="volkswagen"] { stroke: darkgreen; }
 
 .skoda { color: darkblue; }
+.bar.skoda { background-color: darkblue; }
 path[manufacturer="skoda"] { stroke: darkblue; }
 
 .seat { color: darkred; }
+.bar.seat { background-color: darkred; }
 path[manufacturer="seat"] { stroke: darkred; }
 
 .kia { color: linen; }
+.bar.kia { background-color: linen; }
 path[manufacturer="kia"] { stroke: linen; }
 
 .proton { color: coral; }
+.bar.proton { background-color: coral; }
 path[manufacturer="proton"] { stroke: coral; }
 
 .suzuki { color: aliceblue; }
+.bar.suzuki { background-color: aliceblue; }
 path[manufacturer="suzuki"] { stroke: aliceblue; }
 
 .perodua { color: yellow; }
+.bar.perodua { background-color: yellow; }
 path[manufacturer="perodua"] { stroke: yellow; }
 
 .dacia { color: pink; }
+.bar.dacia { background-color: pink; }
 path[manufacturer="dacia"] { stroke: pink; }
 
+/* all manufacturers: */
+/*["Aixam", "Alfa Romeo", "Aston Martin", "Audi", "Bentley", "BMW", "Cadillac", "Chevrolet", "Chrysler", "Citroen", "Dacia", "Ferrari", "Fiat", "Ford", "Honda", "Hyundai", "Infiniti", "Jaguar", "Jeep", "Kia", "Lamborghini", "Land Rover", "Lexus", "Lotus", "LTI", "Maserati", "Mazda", "McLaren", "Mercedes Benz", "MG Motor UK", "Mini", "Mitsubishi", "Morgan", "Nissan", "Perodua", "Peugeot", "Porsche", "Proton", "Renault", "Rolls Royce", "Seat", "Skoda", "Smart", "Ssangyong", "Subaru", "Suzuki", "Toyota", "Vauxhall", "Volkswagen", "Volvo"]
+alfa romeo
+aston martin
+audi
+bentley
+bmw
+cadillac
+chevrolet
+chrysler
+citroen
+dacia
+ferrari
+fiat
+ford
+honda
+hyundai
+infiniti
+jaguar
+jeep
+kia
+lamborghini
+land rover
+lexus
+lotus
+lti
+maserati
+mazda
+mclaren
+mercedes benz
+mg motor uk
+mini
+mitsubishi
+morgan
+nissan
+perodua
+peugeot
+porsche
+proton
+renault
+rolls royce
+seat
+skoda
+smart
+ssangyong
+subaru
+suzuki
+toyota
+vauxhall
+volkswagen
+volvo*/
 
-
-.foo, .bar { color: red; text-decoration: underline; background-color: yellow; }
+.foo, .bar { color: lightgray; }
+.foo { background-color: yellow; }
 .baz { opacity: 1; }
 
 /*path[baz="baz"] { stroke-dasharray: 5,5; }*/
 
 p { line-height: 1.4em; margin-bottom: 1.0em; }
-a { color: #821122; }
-#content {
-    width: 925px;
-    margin: 0 auto;
-}
-#filters {
-    font-family: Arial, sans-serif;
-    margin-bottom: 20px;
-}
-#filters a {
-    color: #000;
-    font-size: 12px;
-    padding: 5px;
-    background: #e2e2e2;
-    cursor: pointer;
-    margin-right: 3px;
-}
-#filters a:last-child {
-    margin-right: 0;
-}
-#filters a.SAS { background: #895881; color: #fff; }
-#filters a.ECS { background: #ED7C31; color: #fff; }
-#filters a.MEA { background: #82A5C0; color: #fff; }
-#filters a.SSF { background: #6E9E75; color: #fff; }
-#filters a.LCN { background: #00BBD6; color: #fff; }
-#filters a.EAS { background: #e25f82; color: #fff; }
-#filters a.NAC { background: #be1932; color: #fff; }
 
 
 h2 { text-align: center; }
@@ -147,12 +200,12 @@ h3 { color: gray; }
     border-top: 1px solid #e2e2e2;
     padding-top: 20px;
 }
-
+path, .type { cursor: pointer; }
 path {
     /*stroke: #e2e2e2;*/
     stroke-width: 1.7;
     fill: none;
-    opacity: 0.2;
+    opacity: 0.1;
 }
 /*path:hover {  stroke-width: 1.7; }*/
 path.current, path.highlight.current {
@@ -179,7 +232,3 @@ text {
     stroke-width: 0.6;
     stroke: #000;
 }
-
-
-#cite { font-size: 0.8em; text-align: right; margin-top:10px; padding-bottom: 20px; }
-#cite a { background: #e2e2e2; text-decoration: none; color: #821122; }

@@ -210,11 +210,8 @@ window.onload = function() {
          tooltip.transition()
            .style('opacity', 0.9)
          tooltip.html(this.getAttribute('manufacturer').toUpperCase() + ' ' + this.getAttribute('model') + '<br/>' + ageFragment + ' &#163;' + yCoord)
-         // tooltip.html(d[i].Manufacturer + ' ' + d.x + ', ' + d.y)
            .style('left', (d3.event.pageX - 30) + 'px')
            .style('top', (d3.event.pageY -55) + 'px');
-
-         // focus.attr("transform", "translate(" + x(d.date) + "," + y(d.close) + ")");
     }
 
     function onmouseover(d, i) {
