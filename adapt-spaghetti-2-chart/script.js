@@ -201,11 +201,15 @@ window.onload = function() {
              i = Math.round(x0),
              xCoord = d[i].x,
              yCoord = parseInt(d[i].y);
-         // console.log(xCoord + ', ' + yCoord);
-
+             var ageFragment = xCoord + ' years old,';
+             if( xCoord === 1 ) {
+                ageFragment = xCoord + ' year old,' }
+            else if ( xCoord === 0 ) {
+                ageFragment = 'Original value:';
+            }
          tooltip.transition()
            .style('opacity', 0.9)
-         tooltip.html(this.getAttribute('manufacturer').toUpperCase() + ' ' + this.getAttribute('model') + '<br/>(x,y): ' + d[i].x + ', ' + d[i].y)
+         tooltip.html(this.getAttribute('manufacturer').toUpperCase() + ' ' + this.getAttribute('model') + '<br/>' + ageFragment + ' &#163;' + yCoord)
          // tooltip.html(d[i].Manufacturer + ' ' + d.x + ', ' + d.y)
            .style('left', (d3.event.pageX - 30) + 'px')
            .style('top', (d3.event.pageY -55) + 'px');
