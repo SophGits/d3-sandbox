@@ -55,27 +55,26 @@ window.onload = function() {
     d3.text('cardata-sample.csv', 'text/csv', function(text) {
         var cars = d3.csv.parseRows(text);
 
+            var manufacturerList = [];
         for (i=1; i < cars.length; i++) {
             var values = cars[i].slice(6, 11); // from index 2 to end of data
             var currData = [];
-            // countryCodes[countries[i][1]] = countries[i][0]; // [0] is code, [1] to full name (AFG -> Afghanistan)
             var started = false;
             for (j=0; j < values.length; j++) {
                 if (values[j] != '') {
                     currData.push({ x: years[j], y: values[j] }); // see range (above) for years array
-                    // obj:
-                    //   x: 1960
-                    //   y: "31.13209756"
+                    manufacturerList.push(cars[i][0]);
                     if (!started) {
-                        // startEnd[countries[i][1]] = { 'startYear':years[j], 'startVal':values[j] }; // just makes AFG obj with startVal & startYear
                         started = true;
-                    // } else if (j == values.length-1) {
-                    //     startEnd[countries[i][1]]['endYear'] = years[j];
-                    //     startEnd[countries[i][1]]['endVal'] = values[j];
                     }
-
                 }
             }
+
+            function removeDuplicates(value, index, self) {
+                return self.indexOf(value) === index;
+            }
+            manufacturerList = manufacturerList.filter( removeDuplicates );
+
             vis.append("svg:path")
                 .data([currData])
                 .attr("manufacturer", cars[i][0].toLowerCase())
@@ -88,6 +87,7 @@ window.onload = function() {
                 .on("click", onclick);
                 // appends data, and away we go on the next item in the loop. var srarted is false again and a new set of datapoints for the next country is collated and appended
         }
+        listManufacturers(manufacturerList);
     });
 
     vis.append("svg:line")
@@ -174,12 +174,11 @@ window.onload = function() {
              i = Math.round(x0),
              xCoord = d[i].x,
              yCoord = parseInt(d[i].y);
-             // debugger
-         console.log(xCoord + ', ' + yCoord);
+         // console.log(xCoord + ', ' + yCoord);
 
          tooltip.transition()
            .style('opacity', 0.9)
-         tooltip.html(this.getAttribute('manufacturer') + ' ' + this.getAttribute('model') + '<br/>(x,y): ' + d[i].x + ', ' + d[i].y)
+         tooltip.html(this.getAttribute('manufacturer').toUpperCase() + ' ' + this.getAttribute('model') + '<br/>(x,y): ' + d[i].x + ', ' + d[i].y)
          // tooltip.html(d[i].Manufacturer + ' ' + d.x + ', ' + d.y)
            .style('left', (d3.event.pageX - 30) + 'px')
            .style('top', (d3.event.pageY -55) + 'px');
@@ -213,5 +212,9 @@ window.onload = function() {
         } else {
             cars.classed('highlight', true);
         }
+    }
+
+    function listManufacturers( list ) {
+        console.log(list);
     }
 }
