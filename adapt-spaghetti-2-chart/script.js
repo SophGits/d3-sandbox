@@ -22,11 +22,11 @@ window.onload = function() {
       height = 550,
       margin = 30,
       startYear = 0,
-      endYear = vintages.length,
+      endYear = 5,
       lowestOTR = 800,
       highestOTR = 31000,
       y = d3.scale.linear().domain([highestOTR, lowestOTR]).range([0 + margin, height - margin]),
-      x = d3.scale.linear().domain([0, vintages.length -1]).range([0 + margin -5, width]), // input domain, output range (if you give input of 500 and range goes to 400 it will give 400; 250 will get you 200 )
+      x = d3.scale.linear().domain([0, vintages.length ]).range([0 + margin -5, width]), // input domain, output range (if you give input of 500 and range goes to 400 it will give 400; 250 will get you 200 )
       years = d3.range(startYear, endYear);
 
     var vis = d3.select("#chart")
@@ -40,7 +40,6 @@ window.onload = function() {
     var line = d3.svg.line()
         .x(function(d) { return x(d.x); }) // by this point, d is an Object like {x: 1960, y: "62.25436585"}
         .y(function(d) { return y(d.y); });
-
 
     // // Regions
     // var countries_regions = {};
@@ -60,7 +59,6 @@ window.onload = function() {
             var values = cars[i].slice(6, 11); // from index 2 to end of data
             var currData = [];
             // countryCodes[countries[i][1]] = countries[i][0]; // [0] is code, [1] to full name (AFG -> Afghanistan)
-
             var started = false;
             for (j=0; j < values.length; j++) {
                 if (values[j] != '') {
@@ -85,18 +83,20 @@ window.onload = function() {
                 // .attr("class", countries_regions[countries[i][1]]) // eg ECS (Albania is in Europe and Central Asia)
                 .attr("d", line) // the D3 line fn (above) takes the whole array of point objects (each obj containing an x and y coordinate) and draws the path for us.
                 .on("mouseover", onmouseover)
-                .on("mouseout", onmouseout);
+                .on("mouseout", onmouseout)
+                .on("mousemove", onmousemove);
                 // appends data, and away we go on the next item in the loop. var srarted is false again and a new set of datapoints for the next country is collated and appended
         }
     });
 
     vis.append("svg:line")
-        .attr("x1", x(0))
+        .attr("x1", x(startYear))
         .attr("y1", y(lowestOTR))
-        .attr("x2", x(5)) // fills in horizontal x-axis line
+        .attr("x2", x(endYear)) // fills in horizontal x-axis line
         .attr("y2", y(lowestOTR))
         .attr("class", "axis")
 
+    // line for y-axis
     vis.append("svg:line")
         .attr("x1", x(startYear))
         .attr("y1", y(lowestOTR))
@@ -156,12 +156,31 @@ window.onload = function() {
         }
     }
 
+    function onmousemove(d, i) {
+        var x0 = x.invert(d3.mouse(this)[0])
+             i = Math.round(x0),
+             xCoord = d[i].x,
+             yCoord = parseInt(d[i].y);
+             // debugger
+         console.log(xCoord + ', ' + yCoord);
+
+         tooltip.transition()
+           .style('opacity', 0.9)
+         tooltip.html(this.getAttribute('manufacturer') + ' ' + this.getAttribute('model') + '<br/>(x,y): ' + d[i].x + ', ' + d[i].y)
+         // tooltip.html(d[i].Manufacturer + ' ' + d.x + ', ' + d.y)
+           .style('left', (d3.event.pageX - 30) + 'px')
+           .style('top', (d3.event.pageY) + 'px');
+
+         // focus.attr("transform", "translate(" + x(d.date) + "," + y(d.close) + ")");
+    }
+
     function onmouseover(d, i) {
+
         var currClass = d3.select(this).attr("class");
         d3.select(this)
             .attr("class", currClass + " current");
 
-        var countryCode = $(this).attr("country");
+        // var countryCode = $(this).attr("country");
         // var countryVals = startEnd[countryCode];
         // var percentChange = 100 * (countryVals['endVal'] - countryVals['startVal']) / countryVals['startVal'];
 
@@ -174,13 +193,12 @@ window.onload = function() {
         // }
         // blurb += "</p>";
 
-// debugger
-        tooltip.transition()
-          .style('opacity', 0.9)
-        tooltip.html(this.getAttribute('manufacturer') + ' ' + this.getAttribute('model') + '<br/>(x,y): ' + d[i].x + ', ' + d[i].y)
-        // tooltip.html(d[i].Manufacturer + ' ' + d.x + ', ' + d.y)
-          .style('left', (d3.event.pageX - 30) + 'px')
-          .style('top', (d3.event.pageY) + 'px');
+        // tooltip.transition()
+        //   .style('opacity', 0.9)
+        // tooltip.html(this.getAttribute('manufacturer') + ' ' + this.getAttribute('model') + '<br/>(x,y): ' + d[i].x + ', ' + d[i].y)
+        // // tooltip.html(d[i].Manufacturer + ' ' + d.x + ', ' + d.y)
+        //   .style('left', (d3.event.pageX - 30) + 'px')
+        //   .style('top', (d3.event.pageY) + 'px');
 
         // $("#default-blurb").hide();
         // $("#blurb-content").html(blurb);
@@ -190,9 +208,8 @@ window.onload = function() {
         var prevClass = currClass.substring(0, currClass.length-8);
         d3.select(this)
             .attr("class", prevClass);
-        // $("#blurb").text("hi again");
-        $("#default-blurb").show();
-        $("#blurb-content").html('');
+        // $("#default-blurb").show();
+        // $("#blurb-content").html('');
     }
 
     function showRegion(regionCode) {
