@@ -178,11 +178,16 @@ window.onload = function() {
     function onmouseover(d, i) {
         if (!d3.select(this).classed('current')) {
             d3.select(this).classed('current', true)
+            var manufacturer = this.attributes['manufacturer'].value.toLowerCase();
+            $('.' + manufacturer).addClass('foo');
         }
     }
 
     function onmouseout(d, i) {
         if (d3.select(this).classed('current')) {
+            var manufacturer = this.attributes['manufacturer'].value.toLowerCase();
+            $('.' + manufacturer).removeClass("foo");
+            // debugger
             d3.select(this).classed('current', false)
         }
         // $("#default-blurb").show();

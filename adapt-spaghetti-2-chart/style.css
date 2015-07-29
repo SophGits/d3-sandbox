@@ -2,7 +2,8 @@ body {
     font-family: Arial;
     margin: 5px 30px;
 }
-.audi.highlight { stroke: #895881; }
+
+/*.audi.highlight { stroke: #895881; }*/
 
 .audi { color: green; }
 path[manufacturer="Audi"] { stroke: green; }
@@ -24,6 +25,8 @@ path[manufacturer="Renault"] { stroke: lawngreen; }
 
 .vauxhall { color: lightblue; }
 path[manufacturer="Vauxhall"] { stroke: lightblue ;}
+
+.foo { color: red; }
 
 p { line-height: 1.4em; margin-bottom: 1.0em; }
 a { color: #821122; }
