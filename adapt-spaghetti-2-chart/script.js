@@ -58,7 +58,7 @@ window.onload = function() {
 
             vis.append("svg:path")
                 .data([currData])
-                .attr("manufacturer", cars[i][0].toLowerCase())
+                .attr("manufacturer", formatManufacturerName(cars[i][0]))
                 .attr("model", cars[i][1])
                 // .attr("class", countries_regions[countries[i][1]]) // eg ECS (Albania is in Europe and Central Asia)
                 .attr("d", line) // the D3 line fn (above) takes the whole array of point objects (each obj containing an x and y coordinate) and draws the path for us.
@@ -66,7 +66,7 @@ window.onload = function() {
                 .on("mouseout", onmouseout)
                 .on("mousemove", onmousemove)
                 .on("click", onclick);
-                // appends data, and away we go on the next item in the loop. var srarted is false again and a new set of datapoints for the next country is collated and appended
+                // appends data, and away we go on the next item in the loop. var started is false again and a new set of datapoints for the next country is collated and appended
         }
         listManufacturers(manufacturerList);
     });
@@ -185,12 +185,12 @@ window.onload = function() {
         // var currClass = d3.select(this).attr("class");
         if (d3.select(this).classed('selected')) {
             d3.select(this).classed('selected', false);
-            var manufacturer = this.attributes['manufacturer'].value.toLowerCase();
+            var manufacturer = this.attributes['manufacturer'].value;
             $('.' + manufacturer).removeClass('bar');
             d3.selectAll("path[manufacturer=" + manufacturer + "]").classed('baz', false);
         } else {
             d3.select(this).classed('selected', true);
-            var manufacturer = this.attributes['manufacturer'].value.toLowerCase();
+            var manufacturer = this.attributes['manufacturer'].value;
             $('.' + manufacturer).addClass('bar');
             d3.selectAll("path[manufacturer=" + manufacturer + "]").classed('baz', true);
         }
@@ -198,18 +198,19 @@ window.onload = function() {
 
     function onmousemove(d, i) {
         var x0 = x.invert(d3.mouse(this)[0])
-             i = Math.round(x0),
-             xCoord = d[i].x,
-             yCoord = parseInt(d[i].y);
-             var ageFragment = xCoord + ' years old,';
-             if( xCoord === 1 ) {
-                ageFragment = xCoord + ' year old,' }
-            else if ( xCoord === 0 ) {
-                ageFragment = 'Original value:';
-            }
-         tooltip.transition()
+            i = Math.round(x0),
+            xCoord = d[i].x,
+            yCoord = parseInt(d[i].y);
+        var ageFragment = xCoord + ' years old,';
+        if( xCoord === 1 ) {
+            ageFragment = xCoord + ' year old,' }
+        else if ( xCoord === 0 ) {
+            ageFragment = 'Original value:';
+        }
+        var manufacturer =   unformatManufacturerName(this.getAttribute('manufacturer'));
+        tooltip.transition()
            .style('opacity', 0.9)
-         tooltip.html(this.getAttribute('manufacturer').toUpperCase() + ' ' + this.getAttribute('model') + '<br/>' + ageFragment + ' &#163;' + yCoord)
+        tooltip.html(manufacturer + ' ' + this.getAttribute('model') + '<br/>' + ageFragment + ' &#163;' + yCoord)
            .style('left', (d3.event.pageX - 30) + 'px')
            .style('top', (d3.event.pageY -55) + 'px');
     }
@@ -217,14 +218,14 @@ window.onload = function() {
     function onmouseover(d, i) {
         if (!d3.select(this).classed('current')) {
             d3.select(this).classed('current', true)
-            var manufacturer = this.attributes['manufacturer'].value.toLowerCase();
+            var manufacturer = this.attributes['manufacturer'].value;
             $('.' + manufacturer).addClass('foo');
         }
     }
 
     function onmouseout(d, i) {
         if (d3.select(this).classed('current')) {
-            var manufacturer = this.attributes['manufacturer'].value.toLowerCase();
+            var manufacturer = this.attributes['manufacturer'].value;
             $('.' + manufacturer).removeClass("foo");
             // debugger
             d3.select(this).classed('current', false)
@@ -242,13 +243,31 @@ window.onload = function() {
         }
     }
 
-    function listManufacturers( list ) {
-        console.log(list);
+    function formatManufacturerName( list ) {
+        if ( Array.isArray(list) ) {
+            var newList = list.map(function( item ) {
+               return item.split(' ').join('-').toLowerCase();
+            });
+        return newList;
+        } else {
+           return list.split(' ').join('-').toLowerCase();
+        }
+    }
+
+    function unformatManufacturerName( item ) {
+        return item.split('-').join(' ').toUpperCase();
+    }
+
+    function listManufacturers( listOriginal ) {
+        var list = formatManufacturerName( listOriginal );
+
         var manuf;
         for(var i=list.length; i--; ) {
-            manuf = list[i].toLowerCase()
-            $('#key').append('<div class="' + manuf + ' type">' + list[i] + '</div>');
+            manuf = list[i];
+            $('#key').append('<div class="' + manuf + ' type">' + listOriginal[i] + '</div>');
         }
+
+
         $('#key .type').on('click', function() {
             var manuf = this.classList[0];
             if ( this.classList.contains("bar") ) {
@@ -259,5 +278,13 @@ window.onload = function() {
                 d3.selectAll("path[manufacturer=" + manuf + "]").classed('baz', true);
             }
         })
+
+
     }
+
+
+
+
+
+
 }

@@ -6,120 +6,128 @@ body {
 /*.audi.highlight { stroke: #895881; }*/
 
 .audi { color: green; }
-.bar.audi { background-color: green; }
+.bar.audi, .audi:hover { background-color: green; color: white; }
 path[manufacturer="audi"] { stroke: green; }
 
 .mitsubishi { color: red; }
-.bar.mitsubishi { background-color: red; }
+.bar.mitsubishi, .mitsubishi:hover { background-color: red; color: white; }
 path[manufacturer="mitsubishi"] { stroke: red; }
 
 .citroen { color: orange; }
-.bar.citroen { background-color: orange; }
+.bar.citroen, .citroen:hover { background-color: orange; color: white; }
 path[manufacturer="citroen"] { stroke: orange; }
 
 .peugeot { color: blue; }
-.bar.peugeot { background-color: blue; }
+.bar.peugeot, .peugeot:hover { background-color: blue; color: white; }
 path[manufacturer="peugeot"] { stroke: blue; }
 
 .nissan { color: purple; }
-.bar.nissan { background-color: purple; }
+.bar.nissan, .nissan:hover { background-color: purple; color: white; }
 path[manufacturer="nissan"] { stroke: purple; }
 
 .renault { color: lawngreen; }
-.bar.renault { background-color: lawngreen; }
+.bar.renault, .renault:hover { background-color: lawngreen; color: white; }
 path[manufacturer="renault"] { stroke: lawngreen; }
 
 .vauxhall { color: darkorchid; }
-.bar.vauxhall { background-color: darkorchid; }
+.bar.vauxhall, .vauxhall:hover { background-color: darkorchid; color: white; }
 path[manufacturer="vauxhall"] { stroke: darkorchid; }
 
 .mini { color: darkcyan; }
-.bar.mini { background-color: darkcyan; }
+.bar.mini, .mini:hover { background-color: darkcyan; color: white; }
 path[manufacturer="mini"] { stroke: darkcyan; }
 
-.honda { color: cyan; }
-.bar.honda { background-color: cyan; }
-path[manufacturer="honda"] { stroke: cyan; }
+.honda { color: dodgerblue; }
+.bar.honda, .honda:hover { background-color: dodgerblue; color: white; }
+path[manufacturer="honda"] { stroke: dodgerblue; }
 
-.aixam { color: bisque; }
-.bar.aixam { background-color: bisque; }
-path[manufacturer="aixam"] { stroke: bisque; }
+.aixam { color: darkslategray; }
+.bar.aixam, .aixam:hover { background-color: darkslategray; color: white; }
+path[manufacturer="aixam"] { stroke: darkslategray; }
 
 .mazda { color: chocolate; }
-.bar.mazda { background-color: chocolate; }
+.bar.mazda, .mazda:hover { background-color: chocolate; color: white; }
 path[manufacturer="mazda"] { stroke: chocolate; }
 
 .chrysler { color: red; }
-.bar.chrysler { background-color: red; }
+.bar.chrysler, .chrysler:hover { background-color: red; color: white; }
 path[manufacturer="chrysler"] { stroke: red; }
 
 .smart { color: lightgreen; }
-.bar.smart { background-color: lightgreen; }
+.bar.smart, .smart:hover { background-color: lightgreen; color: white; }
 path[manufacturer="smart"] { stroke: lightgreen; }
 
 .ssangyong { color: darkgray; }
-.bar.ssangyong { background-color: darkgray; }
+.bar.ssangyong, .ssangyong:hover { background-color: darkgray; color: white; }
 path[manufacturer="ssangyong"] { stroke: darkgray; }
 
 .alfa.romeo { color: lightgray; }
-.bar.alfa.romeo { background-color: lightgray; }
+.bar.alfa.romeo, .alfa.romeo:hover { background-color: lightgray; color: white; }
 path[manufacturer="alfa romeo"] { stroke: lightgray; }
 
 .fiat { color: gray; }
-.bar.fiat { background-color: gray; }
+.bar.fiat, .fiat:hover { background-color: gray; color: white; }
 path[manufacturer="fiat"] { stroke: gray; }
 
 .chevrolet { color: black; }
-.bar.chevrolet { background-color: black; }
+.bar.chevrolet, .chevrolet:hover { background-color: black; color: white; }
 path[manufacturer="chevrolet"] { stroke: black; }
 
 .ford { color: royalblue; }
-.bar.ford { background-color: royalblue; }
+.bar.ford, .ford:hover { background-color: royalblue; color: white; }
 path[manufacturer="ford"] { stroke: royalblue; }
 
-.toyota { color: lightyellow; }
-.bar.toyota { background-color: lightyellow; }
-path[manufacturer="toyota"] { stroke: lightyellow; }
+.toyota { color: gold; }
+.bar.toyota, .toyota:hover { background-color: gold; color: white; }
+path[manufacturer="toyota"] { stroke: gold; }
 
 .hyundai { color: lightpink; }
-.bar.hyundai { background-color: lightpink; }
+.bar.hyundai, .hyundai:hover { background-color: lightpink; color: white; }
 path[manufacturer="hyundai"] { stroke: lightpink; }
 
 .mg.motor.uk { color: darkorange; }
-.bar.mg.motor.uk { background-color: darkorange; }
+.bar.mg.motor.uk, .mg.motor.uk:hover { background-color: darkorange; color: white; }
 path[manufacturer="mg motor uk"] { stroke: darkorange; }
 
 .volkswagen { color: darkgreen; }
-.bar.volkswagen { background-color: darkgreen; }
+.bar.volkswagen, .volkswagen:hover { background-color: darkgreen; color: white; }
 path[manufacturer="volkswagen"] { stroke: darkgreen; }
 
 .skoda { color: darkblue; }
-.bar.skoda { background-color: darkblue; }
+.bar.skoda, .skoda:hover { background-color: darkblue; color: white; }
 path[manufacturer="skoda"] { stroke: darkblue; }
 
 .seat { color: darkred; }
-.bar.seat { background-color: darkred; }
+.bar.seat, .seat:hover { background-color: darkred; color: white; }
 path[manufacturer="seat"] { stroke: darkred; }
 
-.kia { color: linen; }
-.bar.kia { background-color: linen; }
-path[manufacturer="kia"] { stroke: linen; }
+.kia { color: firebrick; }
+.bar.kia, .kia:hover { background-color: firebrick; color: white; }
+path[manufacturer="kia"] { stroke: firebrick; }
 
 .proton { color: coral; }
-.bar.proton { background-color: coral; }
+.bar.proton, .proton:hover { background-color: coral; color: white; }
 path[manufacturer="proton"] { stroke: coral; }
 
-.suzuki { color: aliceblue; }
-.bar.suzuki { background-color: aliceblue; }
-path[manufacturer="suzuki"] { stroke: aliceblue; }
+.suzuki { color: indigo; }
+.bar.suzuki, .suzuki:hover { background-color: indigo; color: white; }
+path[manufacturer="suzuki"] { stroke: indigo; }
 
-.perodua { color: yellow; }
-.bar.perodua { background-color: yellow; }
-path[manufacturer="perodua"] { stroke: yellow; }
+.perodua { color: goldenrod; }
+.bar.perodua, .perodua:hover { background-color: goldenrod; color: white; }
+path[manufacturer="perodua"] { stroke: goldenrod; }
 
-.dacia { color: pink; }
-.bar.dacia { background-color: pink; }
-path[manufacturer="dacia"] { stroke: pink; }
+.dacia { color: hotpink; }
+.bar.dacia, .dacia:hover { background-color: hotpink; color: white; }
+path[manufacturer="dacia"] { stroke: hotpink; }
+
+.alfa-romeo { color: greenyellow; }
+.bar.alfa-romeo, .alfa-romeo:hover { background-color: greenyellow; color: white; }
+path[manufacturer="alfa-romeo"] { stroke: greenyellow; }
+
+.mg-motor-uk { color: steelblue; }
+.bar.mg-motor-uk, .mg-motor-uk:hover { background-color: steelblue; color: white; }
+path[manufacturer="mg-motor-uk"] { stroke: steelblue; }
 
 /* all manufacturers: */
 /*["Aixam", "Alfa Romeo", "Aston Martin", "Audi", "Bentley", "BMW", "Cadillac", "Chevrolet", "Chrysler", "Citroen", "Dacia", "Ferrari", "Fiat", "Ford", "Honda", "Hyundai", "Infiniti", "Jaguar", "Jeep", "Kia", "Lamborghini", "Land Rover", "Lexus", "Lotus", "LTI", "Maserati", "Mazda", "McLaren", "Mercedes Benz", "MG Motor UK", "Mini", "Mitsubishi", "Morgan", "Nissan", "Perodua", "Peugeot", "Porsche", "Proton", "Renault", "Rolls Royce", "Seat", "Skoda", "Smart", "Ssangyong", "Subaru", "Suzuki", "Toyota", "Vauxhall", "Volkswagen", "Volvo"]
@@ -173,7 +181,7 @@ vauxhall
 volkswagen
 volvo*/
 
-.foo, .bar { color: lightgray; }
+.foo, .bar { color: navy; }
 .foo { background-color: yellow; }
 .baz { opacity: 1; }
 
