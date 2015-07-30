@@ -177,9 +177,10 @@ window.onload = function() {
 
     var tooltip = d3.select('body').append('div')
       .style('position', 'absolute')
-      .style('padding', '0 10px')
+      // .style('padding', '2px 2px')
       .style('background', 'white')
       .style('opacity', 0)
+      .classed('tooltip', true)
 
     function onclick(d, i) {
         // var currClass = d3.select(this).attr("class");
@@ -210,7 +211,7 @@ window.onload = function() {
         var manufacturer =   unformatManufacturerName(this.getAttribute('manufacturer'));
         tooltip.transition()
            .style('opacity', 0.9)
-        tooltip.html(manufacturer + ' ' + this.getAttribute('model') + '<br/>' + ageFragment + ' &#163;' + yCoord)
+        tooltip.html('<p>' + manufacturer + ' ' + this.getAttribute('model') + '<br/>' + ageFragment + ' &#163;' + yCoord + '</p>')
            .style('left', (d3.event.pageX - 30) + 'px')
            .style('top', (d3.event.pageY -55) + 'px');
     }

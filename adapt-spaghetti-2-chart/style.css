@@ -212,10 +212,12 @@ body {
     font-family: Arial;
     margin: 5px 30px;
 }
-
+* {
+    box-sizing: border-box;
+}
 /*.audi.highlight { stroke: #895881; }*/
 
-.foo, .bar { color: navy; }
+/*.foo, .bar { color: navy; }*/
 .foo { background-color: yellow; }
 .baz { opacity: 1; }
 
@@ -223,24 +225,22 @@ body {
 
 p { line-height: 1.4em; margin-bottom: 1.0em; }
 
-
 h2 { text-align: center; }
-#key { text-align: center; }
-h3 { color: gray; }
+
+.container { text-align: center; }
+#key { text-align: right; display: block; margin: 0 auto; min-width: 550px; max-width: 925px; padding: 0 50px; }
+
+h3 { color: gray; margin-bottom: 5px; }
 .type {
   display: inline-block;
   padding: 10px;
   border: 1px solid gray;
   border-radius: 2px;
+  margin: 1px;
 }
 
 #vis {
     min-height: 550px;
-}
-#blurb {
-    height: 60px;
-    border-top: 1px solid #e2e2e2;
-    padding-top: 20px;
 }
 path, .type { cursor: pointer; }
 path {
@@ -255,7 +255,6 @@ path.current, path.highlight.current {
     stroke-width: 4;
     cursor: pointer; opacity: 1;
 }
-
 /*.highlight { stroke-width: 1px; }*/
 
 line {
@@ -263,9 +262,11 @@ line {
 }
 
 text {
-    font-family: Helvetica, Arial, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 11px;
 }
+.tooltip p { font-size: 16px; margin: 0; padding: 0 5px; }
+
 .axis {
     stroke-width: 0.8;
     stroke: #000;
