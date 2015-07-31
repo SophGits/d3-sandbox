@@ -1,1 +1,1 @@
-### Adapted sideways, stacked bar chart
+### Adapted sideways, stacked bar chart. Source: http://jsfiddle.net/datashaman/rBfy5/4/light/

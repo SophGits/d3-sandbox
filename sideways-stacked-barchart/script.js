@@ -1,5 +1,7 @@
 window.onload = function() {
 
+  window.count = 0;
+
   var margins = {
     top: 12,
     left: 48,
@@ -10,7 +12,7 @@ window.onload = function() {
     width: 220
   },
   width = 800 - margins.left - margins.right - legendPanel.width,
-    height = 100 - margins.top - margins.bottom,
+    height = 400 - margins.top - margins.bottom,
     dataset = [{
       data: [{
           month: 'USA',
@@ -47,7 +49,7 @@ window.onload = function() {
     }, {
       data: [{
           month: 'USA',
-          count: 123
+          count: 127
       }, {
           month: 'Canada',
           count: 234
@@ -81,7 +83,7 @@ window.onload = function() {
     {
       data: [{
           month: 'USA',
-          count: 123
+          count: 153
       }, {
           month: 'Canada',
           count: 234
@@ -135,26 +137,30 @@ window.onload = function() {
           x0: d.y0
       };
     });
-  }),
-  svg = d3.select('body')
+  })
+
+  var svg = d3.select('body')
     .append('svg')
     .attr('width', width + margins.left + margins.right + legendPanel.width)
     .attr('height', height + margins.top + margins.bottom)
     .append('g')
     .attr('transform', 'translate(' + margins.left + ',' + margins.top + ')');
+
   var xMax = d3.max(dataSet, function (group) { // group is all objs (properties are x,y,x0)
     return d3.max(group, function (d) {
         return d.x + d.x0;
     });
-  }),
-  xScale = d3.scale.linear()
+  })
+
+  var xScale = d3.scale.linear()
     .domain([0, xMax])
-    .range([0, width]),
-  countries = dataSet[0].map(function (d) {
+    .range([0, width])
+
+  var countries = dataSet[0].map(function (d) {
     return d.y;
-  }),
-  _ = console.log(countries),
-  yScale = d3.scale.ordinal()
+  })
+
+  var yScale = d3.scale.ordinal()
     .domain(countries)
     .rangeRoundBands([0, height], .1),
   yAxis = d3.svg.axis()
@@ -173,37 +179,35 @@ window.onload = function() {
   }),
   rects = groups.selectAll('rect')
     .data(function (d) {
-    return d;
-  })
+      return d;
+    })
     .enter()
     .append('rect')
-    .attr('x', function (d) {
-    return xScale(d.x0);
-  })
+    .attr('x', function(d) {
+      return xScale(d.x0);
+    })
     .attr('y', function (d, i) {
-    return yScale(d.y);
-  })
+      return yScale(d.y);
+    })
     .attr('height', function (d) {
-    return yScale.rangeBand();
-  })
-    .attr('width', function (d) {
-    return xScale(d.x);
-  })
-  .on('mouseover', function (d) {
-    var xPos = parseFloat(d3.select(this).attr('x')) / 2 + width / 2;
-    var yPos = parseFloat(d3.select(this).attr('y')) + yScale.rangeBand() / 2;
+      return yScale.rangeBand();
+    })
+    .attr('width', 0) // fn(d) { return xScale(d.x); }
+    .on('mouseover', function (d) {
+      var xPos = parseFloat(d3.select(this).attr('x')) / 2 + width / 2;
+      var yPos = parseFloat(d3.select(this).attr('y')) + yScale.rangeBand() / 2;
 
-    d3.select('#tooltip')
-        .style('left', xPos + 'px')
-        .style('top', yPos + 'px')
-        .select('#value')
-        .text(d.x);
+      d3.select('#tooltip')
+          .style('left', xPos + 'px')
+          .style('top', yPos + 'px')
+          .select('#value')
+          .text(d.x);
 
-    d3.select('#tooltip').classed('hidden', false);
-  })
+      d3.select('#tooltip').classed('hidden', false);
+    })
     .on('mouseout', function () {
-    d3.select('#tooltip').classed('hidden', true);
-  })
+      d3.select('#tooltip').classed('hidden', true);
+    })
 
   svg.append('g')
     .attr('class', 'axis')
@@ -235,5 +239,41 @@ window.onload = function() {
       .attr('x', width + margins.left + 150)
       .attr('y', i * 24 + 6);
   });
+
+
+
+
+  var rects = groups.selectAll('rect').transition()
+    // .attr('x', function(d, i) {
+    //   return xScale(d.x0);
+    // })
+    .attr('width', function(d) {
+      return xScale(d.x);
+    })
+    .delay(function(d,i) {
+
+      var b = window.count;
+// debugger
+      var delay =1;
+      switch(b >= 0) {
+        case (b < 10):
+          delay = 0.5
+          break;
+        case (b >= 10 && b < 20):
+          delay = 2
+          break;
+        case (b >= 20):
+          delay = 3
+          break
+      }
+
+      window.count ++;
+
+      console.log(d.y + ', ' + b + ' delay: ' + delay)
+      return delay * 860
+    })
+    .ease('cubic')
+    .duration(2000)
+
 
 }
