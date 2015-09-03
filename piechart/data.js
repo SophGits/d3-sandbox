@@ -1,23 +1,36 @@
+// go to http://www.lynda.com/D3js-tutorials/Improving-our-pie-layout/162449/185074-4.html
 
 window.onload = function() {
 
   var width = 400,
       height = 400,
       radius = 200,
-      colours = ['green', 'lawngreen', 'limegreen'];
+      colours = ['red', 'orange', 'yellow', 'lightblue', 'pink', 'lawngreen'];
 
   var piedata = [
     {
       label: "Banana",
-      value: 30
+      value: 40
     },
     {
       label: "Apple",
-      value: 50
+      value: 20
     },
     {
       label: "Mango",
       value: 40
+    },
+    {
+      label: "Cherry",
+      value: 60
+    },
+    {
+      label: "Blueberry",
+      value: 50
+    },
+    {
+      label: "Pineapple",
+      value: 10
     }
   ]
 
@@ -35,10 +48,26 @@ window.onload = function() {
     .append('g')
     .attr('transform', 'translate(' + (width -radius) + ', ' + (height -radius) + ')')
     .selectAll('path').data(pie(piedata))
-    .enter().append('path')
-      .attr('fill', function(d,i) {
-        return colours[i];
+    .enter().append('g')
+      .attr('class', 'slice')
+
+    var slices = d3.selectAll('g.slice')
+        .append('path')
+        .attr('fill', function(d,i) {
+          return colours[i];
+        })
+        .attr('d', arc)
+    var text = d3.selectAll('g.slice')
+      .append('text')
+      .text(function(d,i){
+        return d.data.label;
       })
-      .attr('d', arc)
+      .attr('text-anchor', 'middle')
+      .attr('fill', 'darkblue')
+      .attr('transform', function(d) {
+        d.innerRadius = 0;
+        d.outerRadius = radius;
+        return 'translate(' + arc.centroid(d) +')' // puts labels in centre of each slice
+      })
 
 } // window onload
