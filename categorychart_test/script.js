@@ -50,6 +50,7 @@ bars.transition().duration(600)
 
 // Tooltip
 var tooltip = d3.select('body').append('div')
+  .classed('tooltip', true)
   .style('position', 'absolute')
   .style('padding', '0 10px')
   .style('background', 'white')
@@ -57,6 +58,7 @@ var tooltip = d3.select('body').append('div')
 
 // Events
   bars.on('mouseover', function(d) {
+    tooltip.classed('hide', false)
     tempColour = this.style.fill;
     d3.select(this)
       .transition().duration(300)
@@ -64,6 +66,8 @@ var tooltip = d3.select('body').append('div')
       .style('fill', 'green')
   })
   .on('mouseout', function(d) {
+    tooltip.classed('hide', true)
+
     d3.select(this)
       .transition().duration(600)
       .style('opacity', 1)
