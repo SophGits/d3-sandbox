@@ -1,7 +1,39 @@
 window.onload = function() {
 
+var data = [
+  {
+    'name': 'Amy',
+    'num': 10,
+  },
+  {
+    'name': 'Rita',
+    'num': 2
+  },
+  {
+    'name': 'Kim K',
+    'num': 9
+  },
+  {
+    'name': 'Lacey',
+    'num': 5
+  },
+  {
+    'name': 'Howard',
+    'num': 2
+  },
+  {
+    'name': 'Joy',
+    'num': 1
+  }
+];
+var barData = [],
+    personData = [];
 
-var data = [10, 2, 8, 4, 5, 6, 1];
+
+for (key in data) {
+  barData.push(data[key].num)
+  personData.push(data[key].name)
+}
 
 var margin = { top: 20 , right: 30, bottom: 50, left: 60 },
     foo = {
@@ -15,21 +47,21 @@ var svg = d3.select("body").append("svg").attr({
 });
 
 var heightScale = d3.scale.linear() // y = mx + b
-  .domain([0, d3.max(data)])
+  .domain([0, d3.max(barData)])
   .range([0, foo.height]);
 
 var colourScale = d3.scale.linear()
-  .domain([0, d3.max(data)])
+  .domain([0, d3.max(barData)])
   .range(["yellow", "pink"]);
 
 var bars = svg.selectAll("rect")
-  .data(data)
+  .data(barData)
   .enter()
   .append("rect")
   .attr({
-    width: (foo.width /data.length) -1,
+    width: (foo.width /barData.length) -1,
     height: 0, // height passes d as the 1st param, which is what heightscale needs
-    x: function(d, i) { return i * (foo.width /data.length) +1 ;},
+    x: function(d, i) { return i * (foo.width /barData.length) +1 ;},
     y: function(d, i) { return foo.height },
     fill: colourScale
   });
@@ -83,7 +115,7 @@ var tooltip = d3.select('body').append('div')
 
 // Y axis
   var vGuideScale = d3.scale.linear()
-    .domain([0, d3.max(data)])
+    .domain([0, d3.max(barData)])
     .range([foo.height, 0]) // opposite way round to yscale
 
   var vAxis = d3.svg.axis()
