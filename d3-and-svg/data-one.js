@@ -14,8 +14,8 @@ window.onload = function() {
     .enter()
     .append("rect")
     .attr({
-      x: function(d, i) { return i * 101; },
-      y: function(d, i) { return 400 - (d * 5) },
+      x: function(d, i) { return i * 101; }, // puts 1px between bars
+      y: function(d, i) { return 400 - (d * 5) }, // 400 is height of svg
       width: 100,
       height: function(d) { return d*5 },
       fill: "orange"
