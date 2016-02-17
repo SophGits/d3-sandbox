@@ -27,7 +27,7 @@ window.onload = function() {
     .attr({
       width: 100,
       height: heightScale, // height passes d as the 1st param, which is what heightscale needs
-      x: function(d, i) { return i * 101 ;},
+      x: function(d, i) { return i * 101 ;}, // to span full width:  x: function(d, i) { return i * (innerWidth /data.length) +1 ;},
       y: 20, //   for right way up:   y: function(d, i) { return window.innerHeight - heightScale(d) }
       fill: colourScale
     })
