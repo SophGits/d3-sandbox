@@ -1,17 +1,22 @@
 window.onload = function() {
 
-var dataset = [8, 48, 14, 31, 23];
+
+var data = [10, 2, 8, 4, 5, 6, 1];
+
+var margin = { top: 20 , right: 30, bottom: 50, left: 60 },
+    foo = {
+      height: window.innerHeight - margin.top - margin.bottom,
+      width:  window.innerWidth - margin.left - margin.right
+    }
 
 var svg = d3.select("body").append("svg").attr({
   width: window.innerWidth,
   height: window.innerHeight
-})
-
-var data = [10, 2, 8, 4, 5, 6, 1];
+});
 
 var heightScale = d3.scale.linear() // y = mx + b
   .domain([0, d3.max(data)])
-  .range([0, window.innerHeight ]);
+  .range([0, foo.height]);
 
 var colourScale = d3.scale.linear()
   .domain([0, d3.max(data)])
@@ -22,10 +27,10 @@ var bars = svg.selectAll("rect")
   .enter()
   .append("rect")
   .attr({
-    width: (innerWidth /data.length) -1,
+    width: (foo.width /data.length) -1,
     height: 0, // height passes d as the 1st param, which is what heightscale needs
-    x: function(d, i) { return i * (innerWidth /data.length) +1 ;},
-    y: function(d, i) { return window.innerHeight  }, // 400 is height of svg
+    x: function(d, i) { return i * (foo.width /data.length) +1 ;},
+    y: function(d, i) { return foo.height },
     fill: colourScale
   });
 
@@ -35,7 +40,7 @@ bars.transition().duration(600)
     return heightScale(d)
   })
   .attr({
-    y: function(d, i) { return window.innerHeight - heightScale(d) }, // 400 is height of svg
+    y: function(d, i) { return foo.height - heightScale(d) }, // 400 is height of svg
   })
   .delay(function(d,i) {
     return i * 80 // each one animates after 60ms multiplied by its index
@@ -75,7 +80,7 @@ var tooltip = d3.select('body').append('div')
 // Y axis
   var vGuideScale = d3.scale.linear()
     .domain([0, d3.max(data)])
-    .range([window.innerHeight, 0]) // opposite way round to yscale
+    .range([foo.height, 0]) // opposite way round to yscale
 
   var vAxis = d3.svg.axis()
     .scale(vGuideScale)
@@ -85,7 +90,7 @@ var tooltip = d3.select('body').append('div')
   var vGuide = d3.select('svg').append('g')
   vAxis(vGuide)
 
-  vGuide.attr('transform', 'translate(25, 0)')
+  vGuide.attr('transform', 'translate(' + margin.left + ', ' + margin.top +')')
   vGuide.selectAll('path')
     .style({ fill: 'yellow', stroke: "blue", opacity: 0.3 });
   vGuide.selectAll('line')
@@ -94,7 +99,7 @@ var tooltip = d3.select('body').append('div')
 // X axis
   var hGuideScale = d3.scale.linear()
     .domain([0, 4]) // guess of 4 years
-    .range([0, window.innerWidth])
+    .range([0, foo.width])
 
   var hAxis = d3.svg.axis()
     .scale(hGuideScale)
@@ -104,10 +109,13 @@ var tooltip = d3.select('body').append('div')
   var hGuide = d3.select('svg').append('g')
   hAxis(hGuide)
 
-  hGuide.attr('transform', 'translate(0, ' + parseInt(window.innerHeight) + ')')
+  hGuide.attr('transform', 'translate(' + margin.left + ', ' + (foo.height + margin.top) + ')')
   hGuide.selectAll('path')
     .style({ fill: 'green', stroke: "blue", opacity: 0.6 });
   hGuide.selectAll('line')
     .style({ stroke: "red" })
+
+  bars
+    .attr('transform', 'translate('+ margin.left +', '+ margin.top +')');
 
 }
