@@ -12,7 +12,7 @@ window.onload = function() {
 
   var data = [10, 2, 8, 4, 5, 6, 3];
 
-  var heightSCale = d3.scale.linear() // y = mx + b
+  var heightScale = d3.scale.linear() // y = mx + b
     .domain([0, d3.max(data)])
     .range([0, window.innerHeight - 40]);
 
@@ -26,9 +26,9 @@ window.onload = function() {
     .append("rect")
     .attr({
       width: 100,
-      height: heightSCale, // height passes d as the 1st param, which is what heightscale needs
+      height: heightScale, // height passes d as the 1st param, which is what heightscale needs
       x: function(d, i) { return i * 101 ;},
-      y: 20,
+      y: 20, //   for right way up:   y: function(d, i) { return window.innerHeight - heightScale(d) }
       fill: colourScale
     })
 
