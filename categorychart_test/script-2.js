@@ -295,19 +295,30 @@ data.map(function(val, i) {
       lineData.push({ x: day, y: days[day] });
     }
 
-    d3.select('.names')
-      .append('svg:path')
+    var g = d3.select('.names')
+      .append('g')
+      .classed(sub, true)
       .data([lineData])
+
+    g.append('svg:path')
       .attr('d', line)
       .attr('foobar', sub)
       .attr('popular', subs[sub].data['most-popular'].name)
       .attr('image1', subs[sub].data['most-popular'].images[0])
       .classed(sub, true)
       .classed(val.type, true)
+      .classed('dataline', true)
       .style({
         fill: 'none',
         'stroke-width': "10"
       })
+
+      g.selectAll('circle')
+        .data(function (d) { return d; })
+        .enter().append('circle')
+        .attr('cx', function (d) { return x(d.x); })
+        .attr('cy', function (d) { return y(d.y); })
+        .attr('r', 3);
 
   } // sub in subs
 })
@@ -365,38 +376,38 @@ var heightScale = d3.scale.linear() // y = mx + b
     .style('opacity', 0)
 
 
-    // Events
-    d3.selectAll('path')
-      .on('mouseover', function(d) {
-        originalStrokeWidth = this.style['stroke-width'];
-        tooltip.classed('hide', false)
-        d3.select(this)
-          .transition().duration(50)
-          .style('opacity', 1)
-          .style('stroke-width', '15')
-      })
+  // Events
+  d3.selectAll('path')
+    .on('mouseover', function(d) {
+      originalStrokeWidth = this.style['stroke-width'];
+      tooltip.classed('hide', false)
+      d3.select(this)
+        .transition().duration(50)
+        .style('opacity', 1)
+        .style('stroke-width', '15')
+    })
 
-      .on('mouseout', function(d) {
-        tooltip.classed('hide', true)
-        d3.select(this)
-          .transition().duration(50)
-          .style('opacity', 0.8)
-          .style('stroke-width', originalStrokeWidth)
-      })
+    .on('mouseout', function(d) {
+      tooltip.classed('hide', true)
+      d3.select(this)
+        .transition().duration(50)
+        .style('opacity', 0.8)
+        .style('stroke-width', originalStrokeWidth)
+    })
 
-      .on('mousemove', function(d, i) {
+    .on('mousemove', function(d, i) {
 
-        var x0 = x.invert(d3.mouse(this)[0])
-            j = Math.floor(x0 + 0.5),
-            xCoord = d[j - 1].x, // accts as if it's a bar, not a line with a gradient...
-            yCoord = parseInt(d[j -1].y);
+      var x0 = x.invert(d3.mouse(this)[0])
+          j = Math.floor(x0 + 0.5),
+          xCoord = d[j - 1].x, // accts as if it's a bar, not a line with a gradient...
+          yCoord = parseInt(d[j -1].y);
 
-        tooltip.transition() // tooltip here
-          .style('opacity', 0.9)
-        tooltip.html('<p>' + this.getAttribute('foobar') + '</em>' + ' (' + xCoord + ', ' + yCoord + ')</p><img src="http://' + this.getAttribute('image1') + '" />' + '<p>' + this.getAttribute('popular') + '</p>')
-          .style('left', (d3.event.pageX) -50 + 'px')
-          .style('top', (d3.event.pageY - 210) + 'px')
-      })
+      tooltip.transition() // tooltip here
+        .style('opacity', 0.9)
+      tooltip.html('<p>' + this.getAttribute('foobar') + '</em>' + ' (' + xCoord + ', ' + yCoord + ')</p><img src="http://' + this.getAttribute('image1') + '" />' + '<p>' + this.getAttribute('popular') + '</p>')
+        .style('left', (d3.event.pageX) -50 + 'px')
+        .style('top', (d3.event.pageY - 210) + 'px')
+    })
 
 
 
