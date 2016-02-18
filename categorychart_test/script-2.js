@@ -21,9 +21,9 @@ var data = [
           'most-popular': {
             'name': 'Amy',
             'images': [
-              'https://38.media.tumblr.com/avatar_ea669dd4715f_128.png',
-              'https://www.cookingplanit.com/public/uploads/inventory/broccoli2_1329934875.jpg',
-              'http://findicons.com/files/icons/1187/pickin_time/256/broccoli.png'
+              '38.media.tumblr.com/avatar_ea669dd4715f_128.png',
+              'www.cookingplanit.com/public/uploads/inventory/broccoli2_1329934875.jpg',
+              'findicons.com/files/icons/1187/pickin_time/256/broccoli.png'
             ]
           }
         } // data
@@ -45,9 +45,9 @@ var data = [
           'most-popular': {
             'name': 'Trudy',
             'images': [
-              'http://www.germanfoodguide.com/Images/cooking/kohlrabi.jpg',
-              'http://www.vegkitchen.com/wp-content/uploads/2014/03/Kohlrabi-bunch.jpg',
-              'http://urbanfarmcolorado.com/wp-content/uploads/2015/01/kohlrabi.jpg'
+              'www.germanfoodguide.com/Images/cooking/kohlrabi.jpg',
+              'www.vegkitchen.com/wp-content/uploads/2014/03/Kohlrabi-bunch.jpg',
+              'urbanfarmcolorado.com/wp-content/uploads/2015/01/kohlrabi.jpg'
             ]
           }
         } // data
@@ -69,9 +69,9 @@ var data = [
           'most-popular': {
             'name': 'Judy',
             'images': [
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
             ]
           }
         } // data
@@ -98,9 +98,9 @@ var data = [
           'most-popular': {
             'name': 'Henry',
             'images': [
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
             ]
           }
         } // data
@@ -120,9 +120,9 @@ var data = [
           'most-popular': {
             'name': 'Pope',
             'images': [
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
             ]
           }
         } // data
@@ -142,9 +142,9 @@ var data = [
           'most-popular': {
             'name': 'Bo',
             'images': [
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
             ]
           }
         } // data
@@ -169,9 +169,9 @@ var data = [
           'most-popular': {
             'name': 'Finch',
             'images': [
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
             ]
           }
         } // data
@@ -191,9 +191,9 @@ var data = [
           'most-popular': {
             'name': 'Lemon',
             'images': [
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
             ]
           }
         } // data
@@ -213,9 +213,9 @@ var data = [
           'most-popular': {
             'name': 'Bob',
             'images': [
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
-              'http://www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg',
+              'www.vetprofessionals.com/catprofessional/images/home-cat.jpg'
             ]
           }
         } // data
@@ -285,33 +285,32 @@ data.map(function(val, i) {
   var subs = val.subsets;
 
   for(sub in subs) {
-    var currData = [];
+    var lineData = [];
 
     // console.log('days ',subs[sub].data['days']);
     // console.log('popular ',subs[sub].data['most-popular'].name);
 
     var days = subs[sub].data['days'];
     for (day in days) {
-      currData.push({ x: day, y: days[day]});
+      lineData.push({ x: day, y: days[day] });
     }
 
     d3.select('.names')
       .append('svg:path')
-      .data([currData])
+      .data([lineData])
       .attr('d', line)
+      .attr('foobar', sub)
+      .attr('popular', subs[sub].data['most-popular'].name)
+      .attr('image1', subs[sub].data['most-popular'].images[0])
       .classed(sub, true)
       .classed(val.type, true)
       .style({
         fill: 'none',
-        'stroke-width': "3"
+        'stroke-width': "10"
       })
 
   } // sub in subs
-
-
 })
-
-
 
 var heightScale = d3.scale.linear() // y = mx + b
   .domain([0, d3.max(maxValue)])
@@ -339,13 +338,13 @@ var heightScale = d3.scale.linear() // y = mx + b
 
 // X axis
   var hGuideScale = d3.scale.linear()
-    .domain([0, numDays]) // guess of 4 years
+    .domain([1, numDays]) // guess of 4 years
     .range([0, foo.width])
 
   var hAxis = d3.svg.axis()
     .scale(hGuideScale)
     .orient('bottom')
-    .ticks(3)
+    .ticks(numDays)
 
   var hGuide = d3.select('svg')
     .append('g')
@@ -374,7 +373,7 @@ var heightScale = d3.scale.linear() // y = mx + b
         d3.select(this)
           .transition().duration(50)
           .style('opacity', 1)
-          .style('stroke-width', '4')
+          .style('stroke-width', '15')
       })
 
       .on('mouseout', function(d) {
@@ -385,11 +384,21 @@ var heightScale = d3.scale.linear() // y = mx + b
           .style('stroke-width', originalStrokeWidth)
       })
 
-      // .on('mousemove', function(d, i) {
-      //   tooltip.transition() // tooltip here
-      //     .style('opacity', 0.9)
-      //   tooltip.html(' ' + d)
-      //     .style('left', (d3.event.pageX) + 'px')
-      //     .style('top', (d3.event.pageY + 20) + 'px')
-      // })
+      .on('mousemove', function(d, i) {
+
+        var x0 = x.invert(d3.mouse(this)[0])
+            j = Math.floor(x0 + 0.5),
+            xCoord = d[j - 1].x, // accts as if it's a bar, not a line with a gradient...
+            yCoord = parseInt(d[j -1].y);
+
+        tooltip.transition() // tooltip here
+          .style('opacity', 0.9)
+        tooltip.html('<p>' + this.getAttribute('foobar') + '</em>' + ' (' + xCoord + ', ' + yCoord + ')</p><img src="http://' + this.getAttribute('image1') + '" />' + '<p>' + this.getAttribute('popular') + '</p>')
+          .style('left', (d3.event.pageX) -50 + 'px')
+          .style('top', (d3.event.pageY - 210) + 'px')
+      })
+
+
+
+
 } // window
