@@ -41,9 +41,12 @@ var margin = { top: 20 , right: 30, bottom: 50, left: 60 },
       width:  window.innerWidth - margin.left - margin.right
     }
 
-var svg = d3.select("body").append("svg").attr({
-  width: window.innerWidth,
-  height: window.innerHeight
+var svg = d3.select("body")
+  .append("svg")
+  .classed('names', true)
+  .attr({
+    width: window.innerWidth,
+    height: window.innerHeight
 });
 
 var heightScale = d3.scale.linear() // y = mx + b
