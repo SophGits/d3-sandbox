@@ -135,7 +135,7 @@ var data = [
             '3': 10,
             '4': 5,
             '5': 8,
-            '6': 10,
+            '6': 0,
             '7': 11,
             '8': 9
           },
@@ -278,8 +278,8 @@ function getNumDays() {
 
 var maxValue = getMaxVal(),
     numDays = getNumDays(),
-    y = d3.scale.linear().domain([maxValue, 0]).range([0, foo.height]),
-    x = d3.scale.linear().domain([0, numDays]).range([0, foo.width]);
+    y = d3.scale.linear().domain([maxValue, 0]).range([margin.top, foo.height + margin.top]),
+    x = d3.scale.linear().domain([0, numDays]).range([0 -margin.right, foo.width + margin.left]);
 
 data.map(function(val, i) {
   var subs = val.subsets;
