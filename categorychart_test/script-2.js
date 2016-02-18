@@ -317,8 +317,21 @@ data.map(function(val, i) {
         .data(function (d) { return d; })
         .enter().append('circle')
         .attr('cx', function (d) { return x(d.x); })
-        .attr('cy', function (d) { return y(d.y); })
-        .attr('r', 3);
+        .attr('cy', function (d) { return y(d.y +0.8); })
+        .attr('r', 10)
+        .style({
+          fill: 'white',
+          stroke: 'darkorange',
+          'stroke-width': 2,
+          'z-index': 10
+        })
+        .attr('popular', subs[sub].data['most-popular'].name)
+        .classed(sub, true)
+        .classed('datapoint', true)
+        .on('mouseover', function(d, i) {
+          tooltip.classed('hide', false)
+          tooltip.html('<p>Hii '+ this.getAttribute('popular') +'</p>')
+        })
 
   } // sub in subs
 })
