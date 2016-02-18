@@ -295,12 +295,16 @@ data.map(function(val, i) {
       currData.push({ x: day, y: days[day]});
     }
 
-  d3.select('.names')
-    .append('svg:path')
-    .data([currData])
-    .attr('d', line)
-    .classed(sub, true)
-    .style({stroke: 'blue', fill: 'none'})
+    d3.select('.names')
+      .append('svg:path')
+      .data([currData])
+      .attr('d', line)
+      .classed(sub, true)
+      .classed(val.type, true)
+      .style({
+        fill: 'none',
+        'stroke-width': "3"
+      })
 
   } // sub in subs
 
@@ -353,4 +357,39 @@ var heightScale = d3.scale.linear() // y = mx + b
     .style({ fill: 'green', stroke: "blue", opacity: 0.6 });
 
 
-}
+  // Tooltip
+  var tooltip = d3.select('body').append('div')
+    .classed('tooltip', true)
+    .style('position', 'absolute')
+    .style('padding', '0 10px')
+    .style('background', 'pink')
+    .style('opacity', 0)
+
+
+    // Events
+    d3.selectAll('path')
+      .on('mouseover', function(d) {
+        originalStrokeWidth = this.style['stroke-width'];
+        tooltip.classed('hide', false)
+        d3.select(this)
+          .transition().duration(50)
+          .style('opacity', 1)
+          .style('stroke-width', '4')
+      })
+
+      .on('mouseout', function(d) {
+        tooltip.classed('hide', true)
+        d3.select(this)
+          .transition().duration(50)
+          .style('opacity', 0.8)
+          .style('stroke-width', originalStrokeWidth)
+      })
+
+      // .on('mousemove', function(d, i) {
+      //   tooltip.transition() // tooltip here
+      //     .style('opacity', 0.9)
+      //   tooltip.html(' ' + d)
+      //     .style('left', (d3.event.pageX) + 'px')
+      //     .style('top', (d3.event.pageY + 20) + 'px')
+      // })
+} // window
