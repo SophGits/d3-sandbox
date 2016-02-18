@@ -54,7 +54,10 @@ var colourScale = d3.scale.linear()
   .domain([0, d3.max(barData)])
   .range(["yellow", "pink"]);
 
-var bars = svg.selectAll("rect")
+var bars = svg
+  .append('g')
+  .classed('bars', true)
+  .selectAll("rect")
   .data(barData)
   .enter()
   .append("rect")
@@ -77,7 +80,7 @@ bars.transition().duration(600)
   .delay(function(d,i) {
     return i * 80 // each one animates after 60ms multiplied by its index
   })
-  .ease('bounce-out')
+  .ease('bounce-in')
   .duration(1000)
 
 // Tooltip
@@ -105,10 +108,10 @@ var tooltip = d3.select('body').append('div')
       .style('opacity', 1)
       .style('fill', tempColour)
   })
-  .on('mousemove', function(d) {
+  .on('mousemove', function(d, i) {
     tooltip.transition() // tooltip here
       .style('opacity', 0.9)
-    tooltip.html(d)
+    tooltip.html(personData[i] + ' ' + d)
       .style('left', (d3.event.pageX) + 'px')
       .style('top', (d3.event.pageY + 20) + 'px')
   })
@@ -123,7 +126,9 @@ var tooltip = d3.select('body').append('div')
     .orient('left')
     .ticks(10) // number of divisions / tick marks
 
-  var vGuide = d3.select('svg').append('g')
+  var vGuide = d3.select('svg')
+    .append('g')
+    .classed('y_axis', true)
   vAxis(vGuide)
 
   vGuide.attr('transform', 'translate(' + margin.left + ', ' + margin.top +')')
@@ -142,7 +147,9 @@ var tooltip = d3.select('body').append('div')
     .orient('bottom')
     .ticks(4)
 
-  var hGuide = d3.select('svg').append('g')
+  var hGuide = d3.select('svg')
+    .append('g')
+    .classed('x_axis', true)
   hAxis(hGuide)
 
   hGuide.attr('transform', 'translate(' + margin.left + ', ' + (foo.height + margin.top) + ')')
